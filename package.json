@@ -1,0 +1,30 @@
+{
+  "name": "runway-pos",
+  "version": "0.0.1",
+  "description": "A NodeJS powered point of sale system. Built for places which have multiple different businesses selling from one establishment, with a group of shared cashiers.",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node sever.js"
+  },
+  "keywords": [
+    "pos"
+  ],
+  "author": "Myles Keeffe",
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9",
+    "mongoose": "^4.6.3",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.1.0",
+    "passport-local": "^1.0.0"
+  }
+}
