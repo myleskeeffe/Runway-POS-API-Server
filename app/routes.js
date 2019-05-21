@@ -31,8 +31,8 @@ module.exports = function(app){
     apiRoutes.use('/todos', todoRoutes);
 
     todoRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['user','sales','admin']), TodoController.getTodos);
-    todoRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['sales','admin']), TodoController.createTodo);
-    todoRoutes.delete('/:todo_id', requireAuth, AuthenticationController.roleAuthorization(['admin']), TodoController.deleteTodo);
+    todoRoutes.post('/', AuthenticationController.roleAuthorization(['sales','admin']), TodoController.createTodo);
+    todoRoutes.delete('/:todo_id', AuthenticationController.roleAuthorization(['admin']), TodoController.deleteTodo);
 
     // Product Routes
     apiRoutes.use('/products', productRoutes);
