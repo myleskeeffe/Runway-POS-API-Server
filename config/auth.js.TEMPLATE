@@ -1,0 +1,3 @@
+module.exports = {  
+    'secret': 'YOUR SECRET KEY HERE - KEEP THIS PRIVATE AS IT ALLOWS ANYONE TO FORGE A LOGIN',
+  }
