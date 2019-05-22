@@ -7,7 +7,7 @@ var productListSchema = new mongoose.Schema({
         required: true
     },
     business: {
-        type: Number,
+        type: String,
         required: true
     },
     price: {

@@ -6,8 +6,8 @@ var businessListSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    '50dollarPermission': {
-        type: Boolean,
+    fiftyDollarPermission: {
+        type: String,
         required: true
     },
     charity: {
@@ -15,11 +15,11 @@ var businessListSchema = new mongoose.Schema({
         required: false
     },
     charityPercent: {
-        type: Number,
+        type: String,
         required: false
     },
     businessOwners: {
-        type: Array,
+        type: String,
         required: true
     }
 

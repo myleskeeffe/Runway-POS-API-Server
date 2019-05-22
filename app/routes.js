@@ -1,6 +1,8 @@
 var AuthenticationController = require('./controllers/authentication'),  
     TodoController = require('./controllers/todos'),
     ProductController = require('./controllers/products'),  
+    BusinessController = require('./controllers/business'),
+    orderController = require('./controllers/orders'),
     express = require('express'),
     passportService = require('../config/passport'),
     passport = require('passport');
@@ -44,16 +46,16 @@ module.exports = function(app){
     // Business Routes
     apiRoutes.use('/businesses', businessRoutes);
 
-    businessRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['user','sales','admin']), ProductController.getProducts);
-    businessRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['sales','admin']), ProductController.createProduct);
-    businessRoutes.delete('/:business_id', requireAuth, AuthenticationController.roleAuthorization(['admin']), ProductController.deleteProduct);
+    businessRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['user','sales','admin']), BusinessController.getBusinesses);
+    businessRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['sales','admin']), BusinessController.createBusiness);
+    businessRoutes.delete('/:business_id', requireAuth, AuthenticationController.roleAuthorization(['admin']), BusinessController.deleteBusiness);
 
     // Order Routes
     apiRoutes.use('/orders', orderRoutes);
 
-    orderRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['user','sales','admin']), ProductController.getProducts);
-    orderRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['sales','admin']), ProductController.createProduct);
-    orderRoutes.delete('/:order_id', requireAuth, AuthenticationController.roleAuthorization(['admin']), ProductController.deleteProduct);
+    orderRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['user','sales','admin']), orderController.getOrders);
+    orderRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['sales','admin']), orderController.createOrder);
+    orderRoutes.delete('/:order_id', requireAuth, AuthenticationController.roleAuthorization(['admin']), orderController.deleteOrder);
 
     // Set up routes
     app.use('/api', apiRoutes);
