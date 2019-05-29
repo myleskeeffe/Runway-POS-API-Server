@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var orderListSchema = new mongoose.Schema({
 
     product: {
-        type: Number,
+        type: String,
         required: true
     },
     saleDate: {

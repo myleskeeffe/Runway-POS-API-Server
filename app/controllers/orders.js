@@ -17,9 +17,9 @@ exports.getOrders = function(req, res, next){
 exports.createOrder = function(req, res, next){
 
     order.create({
-        name : req.body.name,
-        order : req.body.order,
-        price : req.body.price
+        product : req.body.product,
+        quantity : req.body.quantity,
+        saleDate : req.body.date
     }, function(err, todo) {
 
         if (err){
