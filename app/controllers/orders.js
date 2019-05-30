@@ -40,6 +40,17 @@ exports.createOrder = function(req, res, next){
 
 }
 
+exports.findOrder = function(req, res, next){
+    order.findById({
+        _id : req.params.order_id
+    }, function(err, order) {
+        if (err){
+            res.send(err);
+        }
+        res.json(order)
+    })
+}
+
 exports.deleteOrder = function(req, res, next){
 
     order.remove({

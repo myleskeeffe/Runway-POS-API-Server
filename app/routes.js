@@ -42,6 +42,7 @@ module.exports = function(app){
     productRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['user','sales','admin']), ProductController.getProducts);
     productRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['sales','admin']), ProductController.createProduct);
     productRoutes.delete('/:product_id', requireAuth, AuthenticationController.roleAuthorization(['admin']), ProductController.deleteProduct);
+    productRoutes.get('/find/:product_id', requireAuth, AuthenticationController.roleAuthorization(['user,','sales','admin']), ProductController.findProduct);
 
     // Business Routes
     apiRoutes.use('/businesses', businessRoutes);
@@ -49,6 +50,7 @@ module.exports = function(app){
     businessRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['user','sales','admin']), BusinessController.getBusinesses);
     businessRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['sales','admin']), BusinessController.createBusiness);
     businessRoutes.delete('/:business_id', requireAuth, AuthenticationController.roleAuthorization(['admin']), BusinessController.deleteBusiness);
+    businessRoutes.get('/find/:business_id', requireAuth, AuthenticationController.roleAuthorization(['user,','sales','admin']), BusinessController.findBusiness);
 
     // Order Routes
     apiRoutes.use('/orders', orderRoutes);
@@ -56,6 +58,7 @@ module.exports = function(app){
     orderRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['user','sales','admin']), orderController.getOrders);
     orderRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['sales','admin']), orderController.createOrder);
     orderRoutes.delete('/:order_id', requireAuth, AuthenticationController.roleAuthorization(['admin']), orderController.deleteOrder);
+    orderRoutes.get('/find/:order_id', requireAuth, AuthenticationController.roleAuthorization(['user,','sales','admin']), orderController.findOrder);
 
     // Set up routes
     app.use('/api', apiRoutes);

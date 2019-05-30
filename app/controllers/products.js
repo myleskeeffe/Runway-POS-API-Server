@@ -40,6 +40,17 @@ exports.createProduct = function(req, res, next){
 
 }
 
+exports.findProduct = function(req, res, next){
+    product.findById({
+        _id : req.params.product_id
+    }, function(err, product) {
+        if (err){
+            res.send(err);
+        }
+        res.json(product)
+    })
+}
+
 exports.deleteProduct = function(req, res, next){
 
     product.remove({
