@@ -42,8 +42,18 @@ exports.createBusiness = function(req, res, next){
 
 }
 
-exports.deleteBusiness = function(req, res, next){
+exports.findBusiness = function(req, res, next){
+    business.findById({
+        _id : req.params.business_id
+    }, function(err, business) {
+        if (err){
+            res.send(err);
+        }
+        res.json(business)
+    })
+}
 
+exports.deleteBusiness = function(req, res, next){
     business.remove({
         _id : req.params.business_id
     }, function(err, business) {
